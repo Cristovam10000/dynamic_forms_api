@@ -1,13 +1,10 @@
 version: '3.8'
 services:
   db:
-    image: postgres:15
-    env_file: .env.example
-    volumes: ['./data:/var/lib/postgresql/data']
-  web:
-    build: .
-    env_file: .env.example
+    image: postgres
+    environment:
+      POSTGRES_USER: seu_usuario
+      POSTGRES_PASSWORD: sua_senha_forte
+      POSTGRES_DB: seu_banco
     ports:
-      - "8000:8000"
-    depends_on:
-      - db
+      - "5432:5432"
